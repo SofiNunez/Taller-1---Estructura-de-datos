@@ -36,7 +36,7 @@ bool Biblioteca::agregarUsuario(Usuario* usuario) {
 }  
 Usuario* Biblioteca::encontrarUsuario(string id){
     for (int i = 0; i < totalUsuarios; i++) {
-        if (usuarios[i]->id() == id) {
+        if (usuarios[i]->getId() == id) {
             return usuarios[i];
         }
     }

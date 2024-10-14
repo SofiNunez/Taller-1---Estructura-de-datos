@@ -3,11 +3,12 @@
 #include "MaterialBibliografico.h"
 #include "Revista.h"
 #include "Usuario.h"
+#include "Biblioteca.h"
    
 
 int main()
 {
-   
+    
     Biblioteca biblioteca;
     int opcion;
     do{
@@ -32,7 +33,7 @@ int main()
                 string resumen;
                 std::cin >> resumen;
                 
-                MaterialBibliografico* libro = new Libro(titulo, autor, isbn, fecha, resumen);
+                MaterialBibliografico* libro = new Libro(titulo, isbn, autor, false, fecha, resumen);
                 biblioteca.agregarMaterial(libro);
                 break;
             }
@@ -50,10 +51,10 @@ int main()
                 string mes;
                 std::cin >> mes;
                 std::cout << "Ingrese número de edición: ";
-                string edicion;
+                int edicion;
                 std::cin >> edicion;
                 
-                MaterialBibliografico* revista = new Revista(titulo, autor, isbn, mes, edicion);
+                MaterialBibliografico* revista = new Revista(titulo, isbn, autor, false, edicion, mes);
                 biblioteca.agregarMaterial(revista);
                 break;
             }
@@ -70,14 +71,14 @@ int main()
                 break;
             }
             case 4:{
-                string idUsuario, tituloMaterial;
+
                 std::cout << "Ingrese ID del usuario: ";
                 string idUsuario;
                 std::cin >> idUsuario;
-                Usuario* usuario = biblioteca.buscarUsuario(idUsuario);
+                Usuario* usuario = biblioteca.encontrarUsuario(idUsuario);
                 if (usuario) {
                     std::cout << "Ingrese el título del material a prestar: ";
-                    string tituloMaterial
+                    string tituloMaterial;
                     std::cin >> tituloMaterial;
                     MaterialBibliografico* material = biblioteca.buscarMaterial(tituloMaterial);
                     if (material && usuario->prestarMaterial(material)) {
@@ -90,31 +91,14 @@ int main()
                 }
                 break;
             }
-                string idUsuario, tituloMaterial;
-                std::cout << "Ingrese ID del usuario: ";
-                std::cin >> idUsuario;
-                Usuario* usuario = biblioteca.buscarUsuario(idUsuario);
-                if (usuario) {
-                    std::cout << "Ingrese el título del material a prestar: ";
-                    std::cin >> tituloMaterial;
-                    MaterialBibliografico* material = biblioteca.buscarMaterial(tituloMaterial);
-                    if (material && usuario->prestarMaterial(material)) {
-                        std::cout << "Material prestado exitosamente.\n";
-                    } else {
-                        std::cout << "Error: Material no disponible o ya prestado.\n";
-                    }
-                } else {
-                    std::cout << "Usuario no encontrado.\n";
-                }
-                break;
-            }
+                
             case 5: {
             
                 
                 std::cout << "Ingrese ID del usuario: ";
                 string idUsuario;
                 std::cin >> idUsuario;
-                Usuario* usuario = biblioteca.buscarUsuario(idUsuario);
+                Usuario* usuario = biblioteca.encontrarUsuario(idUsuario);
                 if (usuario) {
                     std::cout << "Ingrese el título del material a devolver: ";
                     string tituloMaterial;
@@ -130,13 +114,13 @@ int main()
                 break;
             }
             case 6: {
-                /
-                biblioteca.mostrarMateriales();
+                
+                biblioteca.printMateriales();
                 break;
             }
             case 7: {
                 
-                biblioteca.mostrarUsuarios();
+                biblioteca.mostrarUsusarios();
                 break;
             }
             case 8: {
@@ -153,7 +137,7 @@ int main()
             }
         }
             
-        }
+        
     }while(opcion!=0);
 
     return 0;

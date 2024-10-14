@@ -5,12 +5,16 @@
 class Usuario {
     private:
         string nombre;
-        int id;
+        string id;
         MaterialBibliografico* materialesPrestados[5];
+        int numPrestados;
     public:
-        Usuario(string nombre, int id, MaterialBibliografico* materialesPrestados[5]);
+        Usuario(string nombre, string id);
         ~Usuario();
-        void prestarMaterial();
-        void devolverMaterial();
+        bool prestarMaterial(MaterialBibliografico* material);
+        bool devolverMaterial(string nombreMaterial);
         void mostrarMaterialesPrestados();
+        void mostrarInformacion();
+        string getId();
+
 };

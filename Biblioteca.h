@@ -1,6 +1,7 @@
 
 #include "MaterialBibliografico.h"
 #include "Usuario.h"
+#include <iostream>
 #include <vector>
 
 class Biblioteca {
