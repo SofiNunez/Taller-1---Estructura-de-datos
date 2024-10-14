@@ -52,5 +52,5 @@ void MaterialBibliografico :: setPrestado(bool prestado) {
 }
 
 MaterialBibliografico :: ~MaterialBibliografico() {
-    cout << "se destruye material bibliografico" << endl;
+    cout << "se destruye material bibliografico" << mostrarInformacion << endl;
 }

@@ -38,5 +38,5 @@ void Revista:: setMesPublicacion(string mesPublicacion) {
 }
 
 Revista :: ~Revista(){
-    cout<<"se destruye esta revista"<<endl;
+    cout<<"se destruye esta revista"<< mostrarInformacion << endl;
 }

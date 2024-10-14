@@ -38,7 +38,8 @@ void Libro:: setResumen(string resumen) {
 }
 
 Libro :: ~Libro(){
-    cout<<"se destruye este libro"<<endl;
+    cout<<"se destruye este libro" << mostrarInformacion <<endl;
 }
+
 
 
